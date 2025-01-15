@@ -1,12 +1,23 @@
 <script setup lang='ts'>
+import { useDishesStore } from '@/stores/dishes';
 import { useFoodStore } from '@/stores/food';
 import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
+
+const { dishId } = defineProps({
+  dishId: { type: Number, required: true },
+});
 
 const selected = ref(0);
 const foodStore = useFoodStore();
 const { foodList } = storeToRefs(foodStore);
 const weight = ref(0);
+
+const { removeDish } = useDishesStore();
+
+const onRemove = () => {
+  removeDish(dishId);
+}
 
 const selectedFood = computed(() => foodList.value.find(x => x.id === selected.value)!);
 const totalNutrition = computed(() => ({
@@ -38,6 +49,9 @@ const totalNutrition = computed(() => ({
         Carbs: {{ totalNutrition.carbs }}
       </div>
     </div>
+    <div class="remove">
+      <button @click="onRemove">-</button>
+    </div>
   </div>
 </template>
 
@@ -46,9 +60,17 @@ const totalNutrition = computed(() => ({
   width: 250px;
   color: aliceblue;
   padding: 15px;
+  position: relative;
 }
 
 .block {
   display: block;
+}
+
+.remove {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>
