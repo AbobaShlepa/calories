@@ -6,6 +6,7 @@ import FoodSelector from './components/FoodSelector.vue';
 
 <template>
   <FoodSelector />
+  <FoodSelector />
 </template>
 
 <style></style>
