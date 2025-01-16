@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import type { IFood } from './models'
 
 let counter = 1
 
@@ -25,12 +26,3 @@ export const useFoodStore = defineStore('food', () => {
 
   return { foodList, addFood }
 })
-
-export interface IFood {
-  id: number
-  name: string
-  calories: number
-  protein: number
-  fat: number
-  carbs: number
-}

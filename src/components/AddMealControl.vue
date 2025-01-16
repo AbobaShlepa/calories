@@ -1,16 +1,19 @@
 <script setup lang='ts'>
-import { useDishesStore } from '@/stores/dishes';
+import { useMealsStore } from '@/stores/meals';
+import { ref } from 'vue';
 
-const { addDish } = useDishesStore();
+const { addMeal } = useMealsStore();
+
+const name = ref('');
 
 const onClick = () => {
-  console.log('called')
-  addDish(0, 0);
+  addMeal(name.value)
 }
 </script>
 
 <template>
   <div class="add-card">
+    <input type="text" v-model="name" />
     <button @click="onClick">+</button>
   </div>
 </template>
