@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import FoodContainer from './components/DishContainer.vue';
-import FoodSelector from './components/FoodSelector.vue';
-import MealContainer from './components/MealContainer.vue';
+import DaySelector from './components/DaySelector.vue';
 
 
 </script>
 
 <template>
-  <MealContainer />
+  <DaySelector />
 </template>
 
 <style></style>

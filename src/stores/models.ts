@@ -1,6 +1,7 @@
 export interface IDay {
   date: Date
   mealIds: number[]
+  active: boolean
 }
 
 export interface IMeal {
