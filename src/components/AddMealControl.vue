@@ -1,13 +1,23 @@
 <script setup lang='ts'>
+import useDaysStore from '@/stores/days';
 import { useMealsStore } from '@/stores/meals';
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { computed, ref } from 'vue';
+
+const daysStore = useDaysStore();
+const { days } = storeToRefs(daysStore);
+const activeDay = computed(() => {
+  return days.value.find(x => x.active);
+})
 
 const { addMeal } = useMealsStore();
+const { addMealForDay } = daysStore;
 
 const name = ref('');
 
 const onClick = () => {
-  addMeal(name.value)
+  const mealId = addMeal(name.value)
+  addMealForDay(activeDay.value?.date!, mealId);
 }
 </script>
 

@@ -8,12 +8,14 @@ export const useMealsStore = defineStore('meals', () => {
   const defaultMeals: IMeal[] = []
   const meals = ref(defaultMeals)
 
-  function addMeal(name: string) {
+  function addMeal(name: string): number {
     meals.value.push({
       id: counter++,
       name,
       dishIds: [],
     })
+
+    return counter - 1
   }
 
   function updateMeal(mealId: number, dishId: number) {
