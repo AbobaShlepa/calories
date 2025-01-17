@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import DaySelector from './components/DaySelector.vue';
 import MealContainer from './components/MealContainer.vue';
+import ParametersCalculator from './components/ParametersCalculator.vue';
 
 
 </script>
 
 <template>
-  <div class="day-wrapper">
+  <!-- <div class="day-wrapper">
     <DaySelector />
   </div>
-  <MealContainer />
+  <MealContainer /> -->
+  <ParametersCalculator />
 </template>
 
 <style scoped>

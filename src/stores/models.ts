@@ -24,3 +24,11 @@ export interface IFood {
   fat: number
   carbs: number
 }
+
+export interface IPerson {
+  id: number
+  name: string
+  weight: number
+  height: number
+  age: number
+}
