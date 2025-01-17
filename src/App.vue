@@ -6,8 +6,16 @@ import MealContainer from './components/MealContainer.vue';
 </script>
 
 <template>
-  <DaySelector />
+  <div class="day-wrapper">
+    <DaySelector />
+  </div>
   <MealContainer />
 </template>
 
-<style></style>
+<style scoped>
+.day-wrapper {
+  height: 20%;
+  position: sticky;
+  top: 0;
+}
+</style>
