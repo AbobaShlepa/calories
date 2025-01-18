@@ -1,12 +1,18 @@
 <script setup lang='ts'>
-import { compile, computed, ref } from 'vue';
+import usePersonsStore from '@/stores/persons';
+import { storeToRefs } from 'pinia';
+import { computed, ref } from 'vue';
 
-const gender = ref('male');
-const age = ref(0);
-const weight = ref(0);
-const height = ref(0);
-const activityLevel = ref(0);
-const target = ref(0);
+const personStore = usePersonsStore();
+const { persons } = storeToRefs(personStore);
+const person = persons.value[0];
+
+const gender = ref(person.gender);
+const age = ref(person.age);
+const weight = ref(person.weight);
+const height = ref(person.height);
+const activityLevel = ref(person.activityLevel);
+const target = ref(person.target);
 
 interface IDictionary {
   [id: number]: number
