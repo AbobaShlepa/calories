@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { IFood } from './models'
+import { getFromLocalStorage, saveToLocalStorage } from './localStorageUtils'
 
 let counter = 1
 
@@ -16,12 +17,14 @@ const defaultFood: IFood[] = [
   },
 ]
 
-export const useFoodStore = defineStore('food', () => {
-  const allFood = defaultFood
-  const foodList = ref(allFood)
+const key = 'food'
+
+export const useFoodStore = defineStore(key, () => {
+  const foodList = ref(getFromLocalStorage<IFood[]>(key) ?? defaultFood)
 
   function addFood(food: IFood) {
-    allFood.push(food)
+    foodList.value.push(food)
+    saveToLocalStorage(key, foodList.value)
   }
 
   return { foodList, addFood }

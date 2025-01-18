@@ -1,12 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { IMeal } from './models'
+import { getFromLocalStorage, saveToLocalStorage } from './localStorageUtils'
 
 let counter = 1
+const key = 'meals'
 
-export const useMealsStore = defineStore('meals', () => {
-  const defaultMeals: IMeal[] = []
-  const meals = ref(defaultMeals)
+export const useMealsStore = defineStore(key, () => {
+  const meals = ref(getFromLocalStorage<IMeal[]>(key) ?? [])
 
   function addMeal(name: string): number {
     meals.value.push({
@@ -15,6 +16,7 @@ export const useMealsStore = defineStore('meals', () => {
       dishIds: [],
     })
 
+    saveToLocalStorage(key, meals.value)
     return counter - 1
   }
 
