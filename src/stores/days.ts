@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 import type { IDay } from './models'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const useDaysStore = defineStore('days', () => {
   const daysPredefined: IDay[] = [
     {
       date: new Date('2025-01-13'),
       mealIds: [],
-      active: false,
+      active: true,
     },
     {
       date: new Date('2025-01-14'),
@@ -28,6 +28,10 @@ const useDaysStore = defineStore('days', () => {
 
   const days = ref(daysPredefined)
 
+  const activeDay = computed(() => {
+    return days.value.find((x) => x.active)!
+  })
+
   function addDay() {
     days.value.push({
       date: new Date(),
@@ -45,7 +49,7 @@ const useDaysStore = defineStore('days', () => {
     day.mealIds.push(mealId)
   }
 
-  return { days, addDay, selectDay, addMealForDay }
+  return { days, addDay, selectDay, addMealForDay, activeDay }
 })
 
 export default useDaysStore

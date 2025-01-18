@@ -23,5 +23,11 @@ export const useDishesStore = defineStore('dishes', () => {
     dishes.value.splice(dishes.value.indexOf(dishToRemove), 1)
   }
 
-  return { dishes, addDish, removeDish }
+  function updateDish(dishId: number, foodId: number, weight: number) {
+    const dish = dishes.value.find((x) => x.id === dishId)!
+    dish.foodId = foodId
+    dish.weight = weight
+  }
+
+  return { dishes, addDish, removeDish, updateDish }
 })

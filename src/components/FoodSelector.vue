@@ -13,10 +13,14 @@ const foodStore = useFoodStore();
 const { foodList } = storeToRefs(foodStore);
 const weight = ref(0);
 
-const { removeDish } = useDishesStore();
+const { updateDish, removeDish } = useDishesStore();
 
 const onRemove = () => {
   removeDish(dishId);
+}
+
+const onSave = () => {
+  updateDish(dishId, selectedFood.value.id, weight.value)
 }
 
 const selectedFood = computed(() => foodList.value.find(x => x.id === selected.value)!);
@@ -49,6 +53,7 @@ const totalNutrition = computed(() => ({
         Carbs: {{ totalNutrition.carbs }}
       </div>
     </div>
+    <button type="button" @click="onSave">Save</button>
     <div class="remove">
       <button @click="onRemove">-</button>
     </div>

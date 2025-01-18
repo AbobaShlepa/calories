@@ -10,7 +10,7 @@ const { addDish } = useDishesStore();
 const { updateMeal } = useMealsStore();
 
 const onClick = () => {
-  const dishId = addDish(0, 0);
+  const dishId = addDish(1, 0);
   updateMeal(mealId, dishId);
 }
 </script>
