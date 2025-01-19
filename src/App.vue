@@ -9,6 +9,7 @@ import NavigationView from './components/NavigationView.vue';
 import useNavigationStore from './stores/navigation';
 import AddFood from './components/AddFood.vue';
 import NutritionChart from './components/NutritionChart.vue';
+import ModalView from './components/ModalView.vue';
 
 const navigationStore = useNavigationStore();
 
@@ -21,8 +22,7 @@ const navigationStore = useNavigationStore();
   </div>
   <MealContainer />
   <DayStatistics />
-  <ParametersCalculator v-if="navigationStore.showPerson" />
-  <AddFood v-if="navigationStore.showAddFood" />
+  <ModalView />
   <NutritionChart />
 </template>
 
