@@ -5,20 +5,23 @@ import DayStatistics from './components/DayStatistics.vue';
 import MealContainer from './components/MealContainer.vue';
 import ParametersCalculator from './components/ParametersCalculator.vue';
 import useDaysStore from './stores/days';
+import NavigationView from './components/NavigationView.vue';
+import useNavigationStore from './stores/navigation';
+import AddFood from './components/AddFood.vue';
 
-const daysStore = useDaysStore();
-const { activeDay } = storeToRefs(daysStore);
-
+const navigationStore = useNavigationStore();
 
 </script>
 
 <template>
+  <NavigationView />
   <div class="day-wrapper">
     <DaySelector />
   </div>
   <MealContainer />
-  <!-- <ParametersCalculator /> -->
-  <DayStatistics :day="activeDay.date" />
+  <DayStatistics />
+  <ParametersCalculator v-if="navigationStore.showPerson" />
+  <AddFood v-if="navigationStore.showAddFood" />
 </template>
 
 <style scoped>
