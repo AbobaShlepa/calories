@@ -13,6 +13,11 @@ const food = reactive({
 
 const onClick = () => {
   addFood(food.name, food.calories, food.protein, food.fat, food.carbs)
+  food.name = ''
+  food.calories = 0;
+  food.protein = 0;
+  food.fat = 0
+  food.carbs = 0
 }
 </script>
 

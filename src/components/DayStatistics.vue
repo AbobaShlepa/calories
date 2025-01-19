@@ -29,6 +29,7 @@ const result = computed(() => {
   }[] = []
   for (const meal of meals.value.filter(x => mealIds.includes(x.id))) {
     const mealDishes = dishes.value.filter(x => meal.dishIds.includes(x.id));
+    console.log('md', mealDishes)
 
     const combos = [];
 
@@ -53,6 +54,8 @@ const result = computed(() => {
       stats.fat += combo.food.fat * combo.weight;
       stats.carbs += combo.food.carbs * combo.weight;
     }
+
+    console.log('c', combos)
 
     dailyStats.push({
       mealName: meal.name,
@@ -79,10 +82,10 @@ const result = computed(() => {
     </div>
     <div class="total" v-if="result.length > 0">
       <h2>Total</h2>
-      <h3>Calories {{ result.map(x => x.calories).reduce((sum, current) => sum += current).toFixed() }}.</h3>
-      <h3>Protein {{ result.map(x => x.protein).reduce((sum, current) => sum += current).toFixed() }}.</h3>
-      <h3>Fat {{ result.map(x => x.fat).reduce((sum, current) => sum += current).toFixed() }}.</h3>
-      <h3>Carbs {{ result.map(x => x.carbs).reduce((sum, current) => sum += current).toFixed() }}.</h3>
+      <h3>Calories {{ result.map(x => x.calories).reduce((sum, current) => sum += current).toFixed() }}</h3>
+      <h3>Protein {{ result.map(x => x.protein).reduce((sum, current) => sum += current).toFixed() }}</h3>
+      <h3>Fat {{ result.map(x => x.fat).reduce((sum, current) => sum += current).toFixed() }}</h3>
+      <h3>Carbs {{ result.map(x => x.carbs).reduce((sum, current) => sum += current).toFixed() }}</h3>
     </div>
   </div>
 </template>

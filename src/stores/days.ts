@@ -29,7 +29,22 @@ const daysPredefined: IDay[] = [
 const key = 'days'
 
 const useDaysStore = defineStore(key, () => {
-  const days = ref(getFromLocalStorage<IDay[]>(key) ?? daysPredefined)
+  function getInitialData(): IDay[] {
+    const data = getFromLocalStorage<IDay[]>(key)
+    if (!data) {
+      return daysPredefined
+    }
+
+    const newData = data.map((x) => ({
+      date: new Date(x.date),
+      mealIds: x.mealIds,
+      active: x.active,
+    }))
+
+    return newData
+  }
+
+  const days = ref(getInitialData())
 
   const activeDay = computed(() => {
     return days.value.find((x) => x.active)!

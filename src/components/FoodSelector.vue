@@ -8,10 +8,13 @@ const { dishId } = defineProps({
   dishId: { type: Number, required: true },
 });
 
-const selected = ref(0);
 const foodStore = useFoodStore();
 const { foodList } = storeToRefs(foodStore);
-const weight = ref(0);
+const dishStore = useDishesStore();
+const { dishes } = storeToRefs(dishStore)
+const dish = dishes.value.find(x => x.id === dishId)!;
+const selected = ref(dish.foodId);
+const weight = ref(dish.weight);
 
 const { updateDish, removeDish } = useDishesStore();
 
