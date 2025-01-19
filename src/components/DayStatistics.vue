@@ -29,7 +29,6 @@ const result = computed(() => {
   }[] = []
   for (const meal of meals.value.filter(x => mealIds.includes(x.id))) {
     const mealDishes = dishes.value.filter(x => meal.dishIds.includes(x.id));
-    console.log('md', mealDishes)
 
     const combos = [];
 
@@ -40,8 +39,6 @@ const result = computed(() => {
         weight: dish.weight / 100
       })
     }
-
-    console.log('c', combos)
 
     const stats = {
       calories: 0,

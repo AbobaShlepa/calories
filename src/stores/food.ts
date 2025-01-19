@@ -22,8 +22,15 @@ const key = 'food'
 export const useFoodStore = defineStore(key, () => {
   const foodList = ref(getFromLocalStorage<IFood[]>(key) ?? defaultFood)
 
-  function addFood(food: IFood) {
-    foodList.value.push(food)
+  function addFood(name: string, calories: number, protein: number, fat: number, carbs: number) {
+    foodList.value.push({
+      id: counter++,
+      name,
+      calories,
+      protein,
+      fat,
+      carbs,
+    })
     saveToLocalStorage(key, foodList.value)
   }
 
