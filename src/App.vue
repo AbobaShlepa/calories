@@ -8,6 +8,7 @@ import useDaysStore from './stores/days';
 import NavigationView from './components/NavigationView.vue';
 import useNavigationStore from './stores/navigation';
 import AddFood from './components/AddFood.vue';
+import NutritionChart from './components/NutritionChart.vue';
 
 const navigationStore = useNavigationStore();
 
@@ -22,6 +23,7 @@ const navigationStore = useNavigationStore();
   <DayStatistics />
   <ParametersCalculator v-if="navigationStore.showPerson" />
   <AddFood v-if="navigationStore.showAddFood" />
+  <NutritionChart />
 </template>
 
 <style scoped>

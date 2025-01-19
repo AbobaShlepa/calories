@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { computed, ref } from 'vue';
 
 const personStore = usePersonsStore();
-const { persons } = storeToRefs(personStore);
+const { persons, calories, protein, fat, carbs } = storeToRefs(personStore);
 const person = persons.value[0];
 
 const gender = ref(person.gender);
@@ -13,50 +13,6 @@ const weight = ref(person.weight);
 const height = ref(person.height);
 const activityLevel = ref(person.activityLevel);
 const target = ref(person.target);
-
-interface IDictionary {
-  [id: number]: number
-}
-
-const activityMap: IDictionary = {
-  [0]: 1.2,
-  [1]: 1.375,
-  [2]: 1.55,
-  [3]: 1.7,
-  [4]: 1.9
-}
-
-const targetMap: IDictionary = {
-  [0]: 0.9,
-  [1]: 1,
-  [2]: 1.1
-}
-
-const calories = computed(() => {
-  const constantValue = gender.value === 'male' ? 5 : -161;
-  return ((10 * weight.value) + (6.25 * height.value) - (5 * age.value) + constantValue) * activityMap[activityLevel.value] * targetMap[target.value]
-})
-
-const protein = computed(() => {
-  return {
-    min: weight.value * 1.6,
-    max: weight.value * 2.2,
-  }
-})
-
-const fat = computed(() => {
-  return {
-    min: weight.value * 0.8,
-    max: weight.value * 1
-  }
-})
-
-const carbs = computed(() => {
-  return {
-    min: (calories.value - protein.value.min * 4.1 - fat.value.min * 9.3) / 4,
-    max: (calories.value - protein.value.max * 4.1 - fat.value.max * 9.3) / 4
-  }
-})
 </script>
 
 <template>
