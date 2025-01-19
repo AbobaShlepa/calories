@@ -3,13 +3,12 @@ import { ref } from 'vue'
 import type { IDish } from './models'
 import { getFromLocalStorage, saveToLocalStorage } from './localStorageUtils'
 
-let counter = 1
-
 const key = 'dishes'
+const items = getFromLocalStorage<IDish[]>(key) ?? []
+const dishes = ref(items)
+let counter = items.length === 0 ? 1 : Math.max(...items.map((x) => x.id)) + 1
 
 export const useDishesStore = defineStore('dishes', () => {
-  const dishes = ref(getFromLocalStorage<IDish[]>(key) ?? [])
-
   function addDish(foodId: number, weight: number): number {
     dishes.value.push({
       id: counter++,

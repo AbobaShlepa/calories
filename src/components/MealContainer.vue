@@ -19,7 +19,7 @@ const { meals } = storeToRefs(mealsStore);
 
 <template>
   <div class="wrapper" v-if="activeDay">
-    <FoodContainer v-for="meal in mealsStore.meals.filter(x => activeDay?.mealIds.includes(x.id))" :key="meal.id"
+    <FoodContainer v-for="meal in meals.filter(x => activeDay?.mealIds.includes(x.id))" :key="meal.id"
       :dish-ids="meal.dishIds" :meal-name="meal.name" :meal-id="meal.id" />
     <AddMealControl />
   </div>
