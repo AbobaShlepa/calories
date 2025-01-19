@@ -77,5 +77,12 @@ const result = computed(() => {
       <h2>{{ stat.fat.toFixed() }}</h2>
       <h2>{{ stat.carbs.toFixed() }}</h2>
     </div>
+    <div class="total">
+      <h2>Total</h2>
+      <h3>Calories {{ result.map(x => x.calories).reduce((sum, current) => sum += current).toFixed() }}.</h3>
+      <h3>Protein {{ result.map(x => x.protein).reduce((sum, current) => sum += current).toFixed() }}.</h3>
+      <h3>Fat {{ result.map(x => x.fat).reduce((sum, current) => sum += current).toFixed() }}.</h3>
+      <h3>Carbs {{ result.map(x => x.carbs).reduce((sum, current) => sum += current).toFixed() }}.</h3>
+    </div>
   </div>
 </template>

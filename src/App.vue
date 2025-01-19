@@ -17,7 +17,7 @@ const { activeDay } = storeToRefs(daysStore);
     <DaySelector />
   </div>
   <MealContainer />
-  <ParametersCalculator />
+  <!-- <ParametersCalculator /> -->
   <DayStatistics :day="activeDay.date" />
 </template>
 
