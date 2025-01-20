@@ -1,6 +1,5 @@
 <script setup lang='ts'>
 import useNavigationStore from '@/stores/navigation';
-import { ref } from 'vue';
 import AddFood from './AddFood.vue';
 import ParametersCalculator from './ParametersCalculator.vue';
 import { storeToRefs } from 'pinia';
@@ -10,7 +9,7 @@ const { showModal } = storeToRefs(navigationStore)
 </script>
 
 <template>
-  <div class="modal" :style="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal" v-if="showModal">
     <div class="container">
       <div class="close">
         <button type="button" @click="navigationStore.closeModal">

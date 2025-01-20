@@ -6,20 +6,20 @@ import { useDishesStore } from './dishes'
 import { useFoodStore } from './food'
 
 const useStatsStore = defineStore('stats', () => {
-  const dayStore = useDaysStore()
-  const { days, activeDay } = storeToRefs(dayStore)
-  const mealIds = days.value.find((x) => x === activeDay.value)!.mealIds
-
-  const mealStore = useMealsStore()
-  const { meals } = storeToRefs(mealStore)
-
-  const dishStore = useDishesStore()
-  const { dishes } = storeToRefs(dishStore)
-
-  const foodStore = useFoodStore()
-  const { foodList } = storeToRefs(foodStore)
-
   const daily = computed(() => {
+    const dayStore = useDaysStore()
+    const { days, activeDay } = storeToRefs(dayStore)
+    const mealIds = days.value.find((x) => x === activeDay.value)!.mealIds
+
+    const mealStore = useMealsStore()
+    const { meals } = storeToRefs(mealStore)
+
+    const dishStore = useDishesStore()
+    const { dishes } = storeToRefs(dishStore)
+
+    const foodStore = useFoodStore()
+    const { foodList } = storeToRefs(foodStore)
+
     const dailyStats: {
       mealName: string
       calories: number

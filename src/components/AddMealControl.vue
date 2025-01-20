@@ -18,6 +18,7 @@ const name = ref('');
 const onClick = () => {
   const mealId = addMeal(name.value)
   addMealForDay(activeDay.value?.date!, mealId);
+  name.value = ''
 }
 </script>
 

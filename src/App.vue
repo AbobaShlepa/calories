@@ -23,7 +23,6 @@ const navigationStore = useNavigationStore();
   <MealContainer />
   <DayStatistics />
   <ModalView />
-  <NutritionChart />
 </template>
 
 <style scoped>

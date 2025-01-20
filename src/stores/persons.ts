@@ -49,24 +49,15 @@ const usePersonsStore = defineStore('persons', () => {
   })
 
   const protein = computed(() => {
-    return {
-      min: defaultPerson.weight * 1.6,
-      max: defaultPerson.weight * 2.2,
-    }
+    return defaultPerson.weight * 1.8
   })
 
   const fat = computed(() => {
-    return {
-      min: defaultPerson.weight * 0.8,
-      max: defaultPerson.weight * 1,
-    }
+    return defaultPerson.weight * 1
   })
 
   const carbs = computed(() => {
-    return {
-      min: (calories.value - protein.value.min * 4.1 - fat.value.min * 9.3) / 4,
-      max: (calories.value - protein.value.max * 4.1 - fat.value.max * 9.3) / 4,
-    }
+    return (calories.value - protein.value * 4.1 - fat.value * 9.3) / 4
   })
 
   return { persons, calories, protein, fat, carbs }

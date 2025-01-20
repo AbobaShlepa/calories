@@ -10,11 +10,11 @@ const nutritionScore = computed(() => ({
   currentCalories: statsStore.daily.length > 0 ? statsStore.daily.map(x => x.calories).reduce((sum, current) => sum += current) : 0,
   suggestedCalories: personsStore.calories,
   currentProtein: statsStore.daily.length > 0 ? statsStore.daily.map(x => x.protein).reduce((sum, current) => sum += current) : 0,
-  suggestedProtein: personsStore.protein.max,
+  suggestedProtein: personsStore.protein,
   currentFat: statsStore.daily.length > 0 ? statsStore.daily.map(x => x.fat).reduce((sum, current) => sum += current) : 0,
-  suggestedFat: personsStore.fat.max,
+  suggestedFat: personsStore.fat,
   currentCarbs: statsStore.daily.length > 0 ? statsStore.daily.map(x => x.carbs).reduce((sum, current) => sum += current) : 0,
-  suggestedCarbs: personsStore.carbs.max,
+  suggestedCarbs: personsStore.carbs,
 }))
 
 </script>
