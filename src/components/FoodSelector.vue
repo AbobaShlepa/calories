@@ -38,25 +38,25 @@ const totalNutrition = computed(() => ({
 
 <template>
   <div class="card">
-    Select food:
+    Выберите еду:
     <select v-model="selected" class="block">
       <option v-for="food in foodList" :key="food.id" :value="food.id">
         {{ food.name }}
       </option>
     </select>
-    Enter weight:
+    Введите вес:
     <input type="number" v-model="weight" />
     <div v-if="selectedFood && totalNutrition">
       <div class="block">
-        Calories: {{ totalNutrition.calories }}
-        Protein: {{ totalNutrition.protein }}
+        Калории: {{ totalNutrition.calories }}
+        Белки: {{ totalNutrition.protein }}
       </div>
       <div class="block">
-        Fat: {{ totalNutrition.fat }}
-        Carbs: {{ totalNutrition.carbs }}
+        Жиры: {{ totalNutrition.fat }}
+        Углеводы: {{ totalNutrition.carbs }}
       </div>
     </div>
-    <button type="button" @click="onSave">Save</button>
+    <button type="button" @click="onSave">Сохранить</button>
     <div class="remove">
       <button @click="onRemove">-</button>
     </div>

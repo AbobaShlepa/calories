@@ -24,27 +24,27 @@ const onClick = () => {
 <template>
   <div class="wrapper">
     <div class="form-item">
-      <label for="name">Name</label>
+      <label for="name">Название</label>
       <input type="text" v-model="food.name" placeholder="Rice" />
     </div>
     <div class="form-item">
-      <label for="calories">Calories</label>
+      <label for="calories">Калории</label>
       <input type="number" v-model="food.calories" />
     </div>
     <div class="form-item">
-      <label for="protein">Protein</label>
+      <label for="protein">Белок</label>
       <input type="number" v-model="food.protein" />
     </div>
     <div class="form-item">
-      <label for="fat">Fat</label>
+      <label for="fat">Жир</label>
       <input type="number" v-model="food.fat" />
     </div>
     <div class="form-item">
-      <label for="carbs">Carbs</label>
+      <label for="carbs">Углеводы</label>
       <input type="number" v-model="food.carbs" />
     </div>
     <button type="button" @click="onClick">
-      Save
+      Добавить
     </button>
   </div>
 </template>
@@ -62,5 +62,9 @@ const onClick = () => {
 
 .form-item {
   padding: 5px;
+}
+
+label {
+  display: block;
 }
 </style>

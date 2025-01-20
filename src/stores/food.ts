@@ -19,7 +19,6 @@ const key = 'food'
 const items = getFromLocalStorage<IFood[]>(key) ?? defaultFood
 
 let counter = items.length === 0 ? 1 : Math.max(...items.map((x) => x.id)) + 1
-console.log('food counter', counter)
 
 export const useFoodStore = defineStore(key, () => {
   const foodList = ref(items)

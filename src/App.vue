@@ -16,9 +16,9 @@ const navigationStore = useNavigationStore();
 </script>
 
 <template>
-  <NavigationView />
   <div class="day-wrapper">
     <DaySelector />
+    <NavigationView class="nav" />
   </div>
   <MealContainer />
   <DayStatistics />
@@ -30,5 +30,12 @@ const navigationStore = useNavigationStore();
   height: 20%;
   position: sticky;
   top: 0;
+}
+
+.nav {
+  width: fit-content;
+  position: absolute;
+  top: 0%;
+  right: 0%;
 }
 </style>

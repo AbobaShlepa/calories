@@ -29,6 +29,8 @@ const { showModal } = storeToRefs(navigationStore)
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  background-color: var(--color-background);
+  padding: 10px;
 }
 
 .container {
@@ -40,5 +42,7 @@ const { showModal } = storeToRefs(navigationStore)
   height: 50px;
   left: 100%;
   transform: translate(0, 0);
+  transform: translate(-100%, 0%);
+  position: absolute;
 }
 </style>

@@ -61,7 +61,7 @@ const target = ref(person.target);
     </div>
 
     <h3>Норма калорий в день: {{ calories.toFixed() }} кал</h3>
-    <h4>Белки {{ protein.toFixed }} г</h4>
+    <h4>Белки {{ protein.toFixed() }} г</h4>
     <h4>Жиры {{ fat.toFixed() }} г</h4>
     <h4>Углеводы {{ carbs.toFixed() }} г</h4>
   </div>

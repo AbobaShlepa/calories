@@ -29,7 +29,6 @@ const useStatsStore = defineStore('stats', () => {
     }[] = []
     for (const meal of meals.value.filter((x) => mealIds.includes(x.id))) {
       const mealDishes = dishes.value.filter((x) => meal.dishIds.includes(x.id))
-      console.log('md', mealDishes)
 
       const combos = []
 
@@ -54,8 +53,6 @@ const useStatsStore = defineStore('stats', () => {
         stats.fat += combo.food.fat * combo.weight
         stats.carbs += combo.food.carbs * combo.weight
       }
-
-      console.log('c', combos)
 
       dailyStats.push({
         mealName: meal.name,
