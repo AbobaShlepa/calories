@@ -1,7 +1,6 @@
 <script setup lang='ts'>
 import usePersonsStore from '@/stores/persons';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
 
 const personStore = usePersonsStore();
 const { calories, protein, fat, carbs } = storeToRefs(personStore);
