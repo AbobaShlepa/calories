@@ -16,7 +16,7 @@ const usePersonsStore = defineStore('persons', () => {
     target: 0,
   }
 
-  const persons = ref([defaultPerson])
+  const person = ref(defaultPerson)
 
   interface IDictionary {
     [id: number]: number
@@ -37,30 +37,46 @@ const usePersonsStore = defineStore('persons', () => {
   }
 
   const calories = computed(() => {
-    const constantValue = defaultPerson.gender === 'male' ? 5 : -161
+    const constantValue = person.value.gender === 'male' ? 5 : -161
     return (
-      (10 * defaultPerson.weight +
-        6.25 * defaultPerson.height -
-        5 * defaultPerson.age +
+      (10 * person.value.weight +
+        6.25 * person.value.height -
+        5 * person.value.age +
         constantValue) *
-      activityMap[defaultPerson.activityLevel] *
-      targetMap[defaultPerson.target]
+      activityMap[person.value.activityLevel] *
+      targetMap[person.value.target]
     )
   })
 
   const protein = computed(() => {
-    return defaultPerson.weight * 1.8
+    return person.value.weight * 1.8
   })
 
   const fat = computed(() => {
-    return defaultPerson.weight * 1
+    return person.value.weight * 1
   })
 
   const carbs = computed(() => {
     return (calories.value - protein.value * 4.1 - fat.value * 9.3) / 4
   })
 
-  return { persons, calories, protein, fat, carbs }
+  function save(
+    age: number,
+    weight: number,
+    height: number,
+    gender: 'male' | 'female',
+    activityLevel: 0 | 1 | 2 | 3 | 4,
+    target: 0 | 1 | 2,
+  ) {
+    person.value.age = age
+    person.value.weight = weight
+    person.value.height = height
+    person.value.gender = gender
+    person.value.activityLevel = activityLevel
+    person.value.target = target
+  }
+
+  return { person, calories, protein, fat, carbs, save }
 })
 
 export default usePersonsStore
