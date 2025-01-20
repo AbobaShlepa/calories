@@ -4,50 +4,55 @@ import { storeToRefs } from 'pinia';
 
 const personStore = usePersonsStore();
 const { calories, protein, fat, carbs } = storeToRefs(personStore);
+
+const onChange = () => {
+  personStore.save();
+}
 </script>
 
 <template>
   <div class="wrapper">
     <div class="form-item">
-      <input name="age" v-model="personStore.person.age" type="number" />
+      <input name="age" v-model="personStore.person.age" type="number" @change="onChange" />
       <label for="age">Возраст</label>
     </div>
     <div class="form-item">
-      <input name="gender-male" type="radio" v-model="personStore.person.gender" value="male" checked />
+      <input name="gender-male" type="radio" v-model="personStore.person.gender" value="male" checked
+        @change="onChange" />
       <label for="gender-male">Муж</label>
-      <input name="gender-female" type="radio" v-model="personStore.person.gender" value="female" />
+      <input name="gender-female" type="radio" v-model="personStore.person.gender" value="female" @change="onChange" />
       <label for="gender">Жен</label>
     </div>
     <div class="form-item">
-      <input name="weight" type="number" v-model="personStore.person.weight" />
+      <input name="weight" type="number" v-model="personStore.person.weight" @change="onChange" />
       <label for="weight">Вес (кг)</label>
     </div>
     <div class="form-item">
-      <input name="height" type="number" v-model="personStore.person.height" />
+      <input name="height" type="number" v-model="personStore.person.height" @change="onChange" />
       <label for="height">Рост (см)</label>
     </div>
     <div class="form-item">
       Уровень активности:
       <br />
-      <input name="al-0" type="radio" v-model="personStore.person.activityLevel" value="0" />
+      <input name="al-0" type="radio" v-model="personStore.person.activityLevel" value="0" @change="onChange" />
       <label for="al-0">Минимальный</label>
-      <input name="al-1" type="radio" v-model="personStore.person.activityLevel" value="1" />
+      <input name="al-1" type="radio" v-model="personStore.person.activityLevel" value="1" @change="onChange" />
       <label for="al-1">Слабый</label>
-      <input name="al-2" type="radio" v-model="personStore.person.activityLevel" value="2" />
+      <input name="al-2" type="radio" v-model="personStore.person.activityLevel" value="2" @change="onChange" />
       <label for="al-2">Средний</label>
-      <input name="al-3" type="radio" v-model="personStore.person.activityLevel" value="3" />
+      <input name="al-3" type="radio" v-model="personStore.person.activityLevel" value="3" @change="onChange" />
       <label for="al-325">Высокий</label>
-      <input name="al-4" type="radio" v-model="personStore.person.activityLevel" value="4" />
+      <input name="al-4" type="radio" v-model="personStore.person.activityLevel" value="4" @change="onChange" />
       <label for="al-4">Экстремальный</label>
     </div>
     <div>
       Цель:
       <br />
-      <input name="t-0" type="radio" v-model="personStore.person.target" value="0" />
+      <input name="t-0" type="radio" v-model="personStore.person.target" value="0" @change="onChange" />
       <label for="t-0">Похудение</label>
-      <input name="t-1" type="radio" v-model="personStore.person.target" value="1" />
+      <input name="t-1" type="radio" v-model="personStore.person.target" value="1" @change="onChange" />
       <label for="t-1">Удержание</label>
-      <input name="t-2" type="radio" v-model="personStore.person.target" value="2" />
+      <input name="t-2" type="radio" v-model="personStore.person.target" value="2" @change="onChange" />
       <label for="t-2">Набор</label>
     </div>
 

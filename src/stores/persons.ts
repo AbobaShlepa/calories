@@ -1,16 +1,18 @@
 import { defineStore } from 'pinia'
 import type { IPerson } from './models'
 import { computed, ref } from 'vue'
+import { getFromLocalStorage, saveToLocalStorage } from './localStorageUtils'
 
 let counter = 1
 
-const usePersonsStore = defineStore('persons', () => {
-  const defaultPerson: IPerson = {
+const key = 'persons'
+
+const usePersonsStore = defineStore(key, () => {
+  const defaultPerson: IPerson = getFromLocalStorage<IPerson>(key) ?? {
     id: counter++,
-    name: 'Vova',
-    weight: 88,
-    height: 176,
-    age: 25,
+    weight: 70,
+    height: 190,
+    age: 30,
     gender: 'male',
     activityLevel: 1,
     target: 0,
@@ -60,20 +62,8 @@ const usePersonsStore = defineStore('persons', () => {
     return (calories.value - protein.value * 4.1 - fat.value * 9.3) / 4
   })
 
-  function save(
-    age: number,
-    weight: number,
-    height: number,
-    gender: 'male' | 'female',
-    activityLevel: 0 | 1 | 2 | 3 | 4,
-    target: 0 | 1 | 2,
-  ) {
-    person.value.age = age
-    person.value.weight = weight
-    person.value.height = height
-    person.value.gender = gender
-    person.value.activityLevel = activityLevel
-    person.value.target = target
+  function save() {
+    saveToLocalStorage(key, defaultPerson)
   }
 
   return { person, calories, protein, fat, carbs, save }

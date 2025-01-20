@@ -27,7 +27,6 @@ export interface IFood {
 
 export interface IPerson {
   id: number
-  name: string
   weight: number
   height: number
   age: number
