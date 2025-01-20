@@ -50,8 +50,8 @@ const onClick = () => {
 </template>
 
 <style scoped>
-.wrapper * {
-  outline: none;
+.wrapper {
+  border: #2c3e50 4px solid;
 }
 
 .wrapper {

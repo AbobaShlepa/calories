@@ -1,18 +1,9 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
 import DaySelector from './components/DaySelector.vue';
 import DayStatistics from './components/DayStatistics.vue';
 import MealContainer from './components/MealContainer.vue';
-import ParametersCalculator from './components/ParametersCalculator.vue';
-import useDaysStore from './stores/days';
 import NavigationView from './components/NavigationView.vue';
-import useNavigationStore from './stores/navigation';
-import AddFood from './components/AddFood.vue';
-import NutritionChart from './components/NutritionChart.vue';
 import ModalView from './components/ModalView.vue';
-
-const navigationStore = useNavigationStore();
-
 </script>
 
 <template>

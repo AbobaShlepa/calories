@@ -26,5 +26,6 @@ const { dishes } = storeToRefs(dishesStore);
 .wrapper {
   display: flex;
   flex-direction: row;
+  outline: #2c3e50 4px solid;
 }
 </style>

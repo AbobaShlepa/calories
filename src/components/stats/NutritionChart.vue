@@ -17,29 +17,36 @@ const nutritionScore = computed(() => ({
   suggestedCarbs: personsStore.carbs,
 }))
 
+const percentages = computed(() => {
+  return {
+    calories: ((nutritionScore.value.currentCalories / nutritionScore.value.suggestedCalories) * 100).toFixed(),
+    proteins: ((nutritionScore.value.currentProtein / nutritionScore.value.suggestedProtein) * 100).toFixed(),
+    fat: ((nutritionScore.value.currentFat / nutritionScore.value.suggestedFat) * 100).toFixed(),
+    carbs: ((nutritionScore.value.currentCarbs / nutritionScore.value.suggestedCarbs) * 100).toFixed()
+  }
+})
+
 </script>
 
 <template>
   <div class="chart">
     <div class="item">
-      <div class="item-fill calories"
-        :style="{ width: (nutritionScore.currentCalories / nutritionScore.suggestedCalories) * 100 + '%' }">Calories
+      <div class="item-fill calories" :style="{ width: percentages.calories + '%' }">Калории ({{ percentages.calories
+        }}%)
       </div>
     </div>
     <div class="item">
-      <div class="item-fill protein"
-        :style="{ width: (nutritionScore.currentProtein / nutritionScore.suggestedProtein) * 100 + '%' }">Protein</div>
-    </div>
-    <div class="item">
-      <div class="item-fill fat"
-        :style="{ width: (nutritionScore.currentFat / nutritionScore.suggestedFat) * 100 + '%' }">
-        Fat
+      <div class="item-fill protein" :style="{ width: percentages.proteins + '%' }">Белки ({{ percentages.proteins }}%)
       </div>
     </div>
     <div class="item">
-      <div class="item-fill carbs"
-        :style="{ width: (nutritionScore.currentCarbs / nutritionScore.suggestedCarbs) * 100 + '%' }">
-        Carbs
+      <div class="item-fill fat" :style="{ width: percentages.fat + '%' }">
+        Жиры ({{ percentages.fat }}%)
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-fill carbs" :style="{ width: percentages.carbs + '%' }">
+        Углеводы ({{ percentages.carbs }}%)
       </div>
     </div>
   </div>
@@ -47,31 +54,23 @@ const nutritionScore = computed(() => ({
 
 <style scoped>
 .item {
-  border: 2px solid #FFF;
+  outline: #2c3e50 4px solid;
   width: 200px;
   height: 50px;
-  background-color: #FFF;
+  background-color: red;
 }
 
 .item-fill {
   height: 50px;
   text-align: center;
   line-height: 50px;
+  font-weight: bolder;
 }
 
-.fat {
-  background-color: #04d37d
-}
-
-.protein {
-  background-color: #4872ee
-}
-
-.calories {
-  background-color: red
-}
-
+.fat,
+.protein,
+.calories,
 .carbs {
-  background-color: #d9f007
+  background-color: rgb(52, 6, 137)
 }
 </style>

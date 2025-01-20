@@ -28,6 +28,7 @@ const onClick = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: #2c3e50 4px solid;
 }
 
 button {

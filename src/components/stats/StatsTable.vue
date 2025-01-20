@@ -35,6 +35,11 @@ const { caption, calories, protein, fat, carbs } = defineProps<Props>();
 </template>
 
 <style scoped>
+table,
+td {
+  outline: #2c3e50 4px solid;
+}
+
 td {
   width: 50px;
   text-align: center;

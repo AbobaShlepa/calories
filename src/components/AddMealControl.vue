@@ -24,7 +24,7 @@ const onClick = () => {
 
 <template>
   <div class="add-card">
-    <input type="text" v-model="name" />
+    <input type="text" v-model="name" placeholder="Прием пищи" />
     <button @click="onClick">+</button>
   </div>
 </template>
@@ -36,6 +36,7 @@ const onClick = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  outline: #2c3e50 4px solid;
 }
 
 button {

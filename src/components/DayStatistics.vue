@@ -2,7 +2,7 @@
 import useStatsStore from '@/stores/stats';
 import StatsTable from './stats/StatsTable.vue';
 import { computed } from 'vue';
-import NutritionChart from './NutritionChart.vue';
+import NutritionChart from './stats/NutritionChart.vue';
 import usePersonsStore from '@/stores/persons';
 const statsStore = useStatsStore()
 const personStore = usePersonsStore();
@@ -59,5 +59,6 @@ const norm = {
   box-sizing: border-box;
   display: flex;
   justify-content: left;
+  gap: 10px
 }
 </style>

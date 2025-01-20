@@ -69,6 +69,7 @@ const totalNutrition = computed(() => ({
   color: aliceblue;
   padding: 15px;
   position: relative;
+  outline: #2c3e50 4px solid;
 }
 
 .block {
