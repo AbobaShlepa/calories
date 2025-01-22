@@ -9,8 +9,8 @@ import ModalView from './components/ModalView.vue';
 <template>
   <div class="day-wrapper">
     <DaySelector />
-    <NavigationView class="nav" />
   </div>
+  <NavigationView class="nav" />
   <MealContainer />
   <DayStatistics />
   <ModalView />
@@ -24,9 +24,8 @@ import ModalView from './components/ModalView.vue';
 }
 
 .nav {
-  width: fit-content;
   position: absolute;
-  top: 0%;
-  right: 0%;
+  top: 0;
+  right: 0;
 }
 </style>

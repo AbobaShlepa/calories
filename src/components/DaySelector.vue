@@ -45,10 +45,6 @@ const onRightClick = () => {
     <div class="arrow">
       <button type="button" @click="onRightClick">&gt;</button>
     </div>
-    <!-- <div class="item" :class="{ active: day.active }" v-for="day in store.days" :key="day.date.toString()"
-      @click="selectDay(day.date)">
-      {{ day.date.toLocaleDateString('ru-RU', options) }}
-    </div> -->
     <div class="item">
       <button @click="addDay">+</button>
     </div>
