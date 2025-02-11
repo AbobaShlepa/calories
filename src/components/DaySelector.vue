@@ -6,14 +6,13 @@ import { ref } from 'vue';
 const store = useDaysStore();
 const { addDay, selectDay } = store;
 const options: Intl.DateTimeFormatOptions = {
-  month: 'long',
+  month: 'numeric',
   day: 'numeric'
 };
 
 const { days } = storeToRefs(store);
-const allDays = days.value;
-const index = allDays.indexOf(store.activeDay);
-const lastIndex = allDays.length - 1;
+const index = days.value.indexOf(store.activeDay);
+const lastIndex = days.value.length - 1;
 const activeIndex = ref(index === -1 ? lastIndex : index);
 
 const onLeftCLick = () => {
@@ -21,15 +20,15 @@ const onLeftCLick = () => {
     activeIndex.value--;
   }
 
-  selectDay(allDays[activeIndex.value].date);
+  selectDay(days.value[activeIndex.value].date);
 }
 
 const onRightClick = () => {
-  if (activeIndex.value < lastIndex) {
+  if (activeIndex.value < days.value.length - 1) {
     activeIndex.value++;
   }
 
-  selectDay(allDays[activeIndex.value].date);
+  selectDay(days.value[activeIndex.value].date);
 }
 
 </script>

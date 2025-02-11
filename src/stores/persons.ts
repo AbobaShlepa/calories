@@ -51,7 +51,7 @@ const usePersonsStore = defineStore(key, () => {
   })
 
   const protein = computed(() => {
-    return person.value.weight * 1.8
+    return person.value.weight * 2.2
   })
 
   const fat = computed(() => {

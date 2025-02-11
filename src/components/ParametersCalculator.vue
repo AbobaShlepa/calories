@@ -64,10 +64,6 @@ const onChange = () => {
 </template>
 
 <style scoped>
-.wrapper * {
-  outline: none;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
